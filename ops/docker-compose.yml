@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    app:
+      restart: always
+      expose:
+        - "5000"
+      build:
+        context: ../
+        dockerfile: ops/Dockerfile
+      command: bash -c "cd flask && gunicorn -b [::1]:5000 app:app --timeout 15 --keep-alive 5"
+      ports:
+        - "5000:5000"
