@@ -16,4 +16,23 @@ services:
       ports:
         - "80:80"
       links:
-        - "app:app"  
+        - "app:app"
+
+    data:
+      restart: always
+      image: postgres:latest
+      volumes:
+        - /var/lib/postgresql
+      command: "true"
+
+    postgres:
+      restart: always
+      image: postgres:latest
+      environment:
+         - POSTGRES_PASSWORD=password
+         - POSTGRES_USER=postgres
+         - POSTGRES_DB=example
+      volumes_from:
+        - data
+      ports:
+        - "5432:5432"
