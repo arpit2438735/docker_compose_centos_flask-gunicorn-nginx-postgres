@@ -8,6 +8,11 @@ services:
       build:
         context: ../
         dockerfile: ops/Dockerfile
+      environment:
+        - POSTGRES_PASSWORD=password
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=example
+        - POSTGRES_ADDRESS=postgres:5432   
       command: bash -c "cd flask && gunicorn -b :5000 app:app --timeout 15 --keep-alive 5"
     
     nginx:
@@ -16,6 +21,7 @@ services:
       ports:
         - "80:80"
       links:
+        - "postgres:postgres"
         - "app:app"
 
     data:

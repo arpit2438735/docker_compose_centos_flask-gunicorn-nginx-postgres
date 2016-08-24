@@ -12,8 +12,9 @@ RUN groupadd -r ${APP_USER} \
     -g ${APP_USER} ${APP_USER}
 
 # In order to set psycopg2 package need to install(postgresql-devel gcc)
-RUN yum install -y postgresql-devel && \
+RUN yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel && \
     yum install -y python-devel.x86_64 && \
+    yum install -y postgresql-devel gcc&& \
     yum clean all
     
 #CURL pip package for python

@@ -1,8 +1,16 @@
+import os
+
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2:///demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_ADDR}/{DB_NAME}".format(
+        DB_USER=os.environ.get('POSTGRES_USER'),
+        DB_PASS=os.environ.get('POSTGRES_PASSWORD'),
+        DB_ADDR=os.environ.get('POSTGRES_ADDRESS'),
+        DB_NAME=os.environ.get('POSTGRES_DB')
+    )
+
 db = SQLAlchemy(app)
 
 # Create our database model
@@ -27,7 +35,7 @@ def main():
             db.session.add(reg)
             db.session.commit()
     
-    return render_template('index.html')
+    return render_template('index.html', users = User.query.all())
 
 
 if __name__ == "__main__":
