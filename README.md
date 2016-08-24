@@ -16,14 +16,16 @@ I am sure you guys want to try `docker`, it pretty new thing in the market and d
   ```
 6. Navigate to `ops` folder and type `docker-compose up -d`
 7. After successful build then type http:<docker-ip> for my case it's [http://192.168.99.100](http://192.168.99.100)
+8. Login to app machine of docker using `docker exec -it <continerid> bash`
+9. Navigate to `app` folder and type in python env type `db.create_all()`
 
 ## Checklist
 
 - [x] Create `guincorn` server and docker-compose.
 - [x] Create `nginx` docker-compose.
 - [ ] Static `js/css` example in flask and server from nginx.
-- [ ] Flask Example of use of `postgres`.
-- [ ] Docker image of postgres and usage.
+- [x] Flask Example of use of `postgres`.
+- [x] Docker image of postgres and usage.
 
 ## Issues:-
 Feel free to raise it over [here](https://github.com/arpit2438735/docker_compose_centos_flask-gunicorn-nginx-postgres/issues).
