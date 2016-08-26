@@ -15,7 +15,7 @@ I am sure you guys want to try `docker`, it pretty new thing in the market and d
         
   ```
 6. Navigate to `ops` folder and type `docker-compose up -d`
-7. After successful build then type http:<docker-ip> for my case it's [http://192.168.99.100](http://192.168.99.100)
+7. After successful build then type `http://<docker-ip>` for my case it's [http://192.168.99.100](http://192.168.99.100)
 8. Login to app machine of docker using `docker exec -it <continerid> bash`
 9. Navigate to `app` folder and type in python env type `db.create_all()`
 
